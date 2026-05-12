@@ -16,7 +16,10 @@ async function fetchAll(page, limit) {
 
         const response = await taskRepository.listAll(limit, offset)
 
-        return response
+        return {
+            founds: response.founds,
+            totalPages: response.totalPages
+        }
     } catch (error) {
         throw error
     }

@@ -30,9 +30,16 @@ const tasks = {
             LIMIT ? OFFSET ?`, [limit, offset]
         )
 
+        const totalPages = await query(
+            `SELECT COUNT(*) as totalPages FROM tasks`
+        )
+
         if (allFoundTasks === 0) throw new Error('Nenhuma tarefa encontrada')
 
-        return allFoundTasks
+        return {
+            founds: allFoundTasks,
+            totalPages: totalPages[0]
+        }
     }
 }
 
