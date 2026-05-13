@@ -30,15 +30,17 @@ const tasks = {
             LIMIT ? OFFSET ?`, [limit, offset]
         )
 
-        const totalPages = await query(
-            `SELECT COUNT(*) as totalPages FROM tasks`
+        if (allFoundTasks === 0) throw new Error('Nenhuma tarefa encontrada')
+
+        const result = await query(
+            `SELECT COUNT(*) as total FROM tasks`
         )
 
-        if (allFoundTasks === 0) throw new Error('Nenhuma tarefa encontrada')
+        const totalPages = Math.ceil(result[0].total / limit)
 
         return {
             founds: allFoundTasks,
-            totalPages: totalPages[0]
+            totalPages: totalPages
         }
     },
 
