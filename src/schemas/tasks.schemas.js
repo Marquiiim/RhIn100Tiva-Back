@@ -9,6 +9,7 @@ const taskValidateSchema = z.object({
 
     description: z.string()
         .max(500, 'Descrição muito longa')
+        .nullable()
         .optional()
         .default('')
 })

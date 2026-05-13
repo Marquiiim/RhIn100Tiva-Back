@@ -87,11 +87,13 @@ const tasks = {
 
         if (alreadyExist.length === 0) throw new Error('Task não existente no servidor')
 
+        const newStatus = alreadyExist[0].isComplete ? 0 : 1
+
         const toggleStatus = await query(
             `UPDATE tasks
             SET isComplete = ?,
             completedAt = IF(? = 1, NOW(), NULL)
-            WHERE id = ?`, [!alreadyExist[0].isComplete, !alreadyExist[0].isComplete, taskId]
+            WHERE id = ?`, [newStatus, newStatus, taskId]
         )
 
         return {
