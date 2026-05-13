@@ -1,10 +1,10 @@
 const taskServices = require('../services/taskServices')
 
-async function taskCreate(req, res, next) {
+async function createTask(req, res, next) {
     try {
         const { task } = req.body
 
-        const response = await taskServices.addTask(task)
+        await taskServices.add(task)
 
         return res.status(200).json({
             success: true,
@@ -37,7 +37,84 @@ async function fetchAllTasks(req, res) {
     }
 }
 
+async function getTask(req, res) {
+    try {
+        const { id } = req.query
+
+        const response = await taskServices.get(id)
+
+        return res.status(200).json({
+            success: true,
+            task: response.data
+        })
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
+async function changeTask(req, res) {
+    try {
+        const { id, name, description } = req.body.task
+        const task = { id, name, description }
+
+        await taskServices.change(task)
+
+        return res.status(200).json({
+            success: true,
+            message: 'Alteração salva com sucesso'
+        })
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
+async function statusTask(req, res) {
+    try {
+        const { id } = req.body
+
+        await taskServices.status(id)
+
+        return res.status(200).json({
+            success: true,
+            message: 'Status da task alterado com sucesso'
+        })
+    } catch (error) {
+        return res.status(400).json({
+            success: true,
+            message: error.message
+        })
+    }
+}
+
+async function deleteTask(req, res) {
+    try {
+        const { id } = req.query
+
+        await taskServices.discard(id)
+
+        return res.status(200).json({
+            success: true,
+            message: 'Task deletada com sucesso'
+        })
+    } catch (error) {
+        return res.status(400).json({
+            success: true,
+            message: error.message
+        })
+    }
+}
+
 module.exports = {
-    taskCreate,
-    fetchAllTasks
+    createTask,
+    fetchAllTasks,
+    getTask,
+    changeTask,
+    statusTask,
+    deleteTask
 }
