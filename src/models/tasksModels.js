@@ -29,8 +29,8 @@ const tasks = {
 
         const allFoundTasks = await query(
             `SELECT * FROM tasks
-            ORDER BY createdAt DESC
-            LIMIT ? OFFSET ?`, [safeLimit, safeOffset]
+             ORDER BY createdAt DESC 
+             LIMIT ${safeLimit} OFFSET ${safeOffset}`
         )
 
         if (allFoundTasks.length === 0) throw new Error('Nenhuma tarefa encontrada')
