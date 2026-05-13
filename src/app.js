@@ -6,7 +6,7 @@ const rateLimiter = require('./middlewares/rateLimiter')
 const app = express()
 
 app.use(cors({
-    origin: 'https://rh-in100-tiva-front.vercel.app'
+    origin: 'https://rh-in100-tiva-front-j0joo3s5z-marquiiims-projects.vercel.app'
 }))
 
 app.use(express.json())
