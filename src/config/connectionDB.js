@@ -11,12 +11,24 @@ const pool = mysql.createPool({
     port: process.env.DB_PORT,
     waitForConnections: true,
     connectionLimit: 10,
-    queueLimit: 0
+    queueLimit: 0,
+    enableKeepAlive: true,
+    keepAliveInitialDelay: 0
 })
 
 const query = (sql, params) => {
+    if (!params) params = [];
+    if (!Array.isArray(params)) params = [params];
+
+    const formattedParams = params.map(p => {
+        if (typeof p === 'string' && !isNaN(p) && p.trim() !== '') {
+            return Number(p);
+        }
+        return p;
+    });
+
     return new Promise((resolve, reject) => {
-        pool.execute(sql, params, (error, results) => {
+        pool.execute(sql, formattedParams, (error, results) => {
             if (error) reject(error)
             else resolve(results)
         })
