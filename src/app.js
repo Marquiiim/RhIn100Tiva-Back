@@ -5,8 +5,16 @@ const rateLimiter = require('./middlewares/rateLimiter')
 
 const app = express()
 
+const allowedOrigins = [
+    //PÚBLICO
+    'https://rh-in100-tiva-front.vercel.app?_vercel_share=iYHMw8vxfkm3pn6XjvzDEMovcw1VTkti',
+
+    //PRIVADO
+    'https://rh-in100-tiva-front-j0joo3s5z-marquiiims-projects.vercel.app'
+]
+
 app.use(cors({
-    origin: 'https://rh-in100-tiva-front-j0joo3s5z-marquiiims-projects.vercel.app'
+    origin: allowedOrigins
 }))
 
 app.use(express.json())
