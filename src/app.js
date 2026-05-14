@@ -10,7 +10,7 @@ const allowedOrigins = [
     'https://rh-in100-tiva-front.vercel.app',
 
     // Frontend privado/de preview (Vercel)
-    'https://rh-in100-tiva-front-m89bs9v7o-marquiiims-projects.vercel.app'
+    'https://rh-in100-tiva-front-713bkdajt-marquiiims-projects.vercel.app'
 ]
 
 app.use(cors({
