@@ -14,7 +14,7 @@ const allowedOrigins = [
 ]
 
 app.use(cors({
-    origin: allowedOrigins
+    origin: 'https://rh-in100-tiva-front.vercel.app?_vercel_share=iYHMw8vxfkm3pn6XjvzDEMovcw1VTkti'
 }))
 
 app.use(express.json())
