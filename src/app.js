@@ -7,10 +7,10 @@ const app = express()
 
 const allowedOrigins = [
     // Frontend público (Vercel)
-    'https://rh-in100-tiva-front.vercel.app',
+    'https://rh-in100-tiva-front.vercel.app?_vercel_share=iYHMw8vxfkm3pn6XjvzDEMovcw1VTkti',
 
     // Frontend privado/de preview (Vercel)
-    'https://rh-in100-tiva-front-j0joo3s5z-marquiiims-projects.vercel.app',
+    'https://rh-in100-tiva-front-gyg5fpa0y-marquiiims-projects.vercel.app'
 ]
 
 app.use(cors({
