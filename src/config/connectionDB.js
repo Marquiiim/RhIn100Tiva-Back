@@ -28,7 +28,7 @@ const query = (sql, params) => {
     });
 
     return new Promise((resolve, reject) => {
-        pool.execute(sql, formattedParams, (error, results) => {
+        pool.query(sql, formattedParams, (error, results) => {
             if (error) reject(error)
             else resolve(results)
         })
