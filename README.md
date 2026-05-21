@@ -54,7 +54,7 @@ npm start
 | GET    | /api/tasks     | Lista tarefas com paginação   |
 | GET    | /api/tasks/:id | Retorna uma tarefa específica |
 | POST   | /api/tasks     | Cria uma nova tarefa          |
-| PUT    | /api/tasks/:id | Atualiza uma tarefa existente |
+| PATCH  | /api/tasks/:id | Atualiza uma tarefa existente |
 | DELETE | /api/tasks/:id | Remove uma tarefa             |
 
 ---
@@ -79,7 +79,7 @@ Origens permitidas:
 
 ### Rate Limiting
 
-* Limite: 100 requisições por IP
+* Limite: 100 requisições
 * Intervalo: 15 minutos
 
 ---
